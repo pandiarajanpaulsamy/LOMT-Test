@@ -1,0 +1,58 @@
+<html>
+    <head>    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.0.0/jasmine.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.0.0/jasmine.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.0.0/jasmine-html.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.0.0/boot.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-mocks.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="Controller/usercontroller.js"></script>
+    <!--<script src="test/UserControllerTest.js"></script>-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body ng-app="UserManagementApp" ng-controller="userController">
+        <div class="container outerDiv">
+            <div class="row ">
+                <div class="col-sm-4">
+                    <h3> User List </h3>
+                    <ul>
+                        <li ng-repeat="user in userList track by $index" ng-click="edit($index);">{{user.Name}}- {{user.Role}} <a class="btn" ng-click="delete($index)">Delete</a> </li>
+                    </ul>
+                </div>
+                <div class="col-sm-8 verticalLine">
+                    <form class="form-horizontal">
+                            <div class=" form-group center-block outWdt"></div>
+                            
+                            <div class="form-group  pdt">
+                                <div class="input-normal frmStl">
+                                    Name
+                                </div>                             
+                                <div class="frmStl pdt10">
+                                    <input type="text" class="form-control inputWidth" id="name" placeholder="Name" ng-model="userObject.Name"/>
+                                </div>                                
+                            </div>
+                            <div class="form-group  pdt">
+                                <div class="input-normal frmStl">
+                                    Role
+                                </div>
+                                <div class="frmStl pdt">
+                                    <input type="text" class="form-control inputWidth" id="role" placeholder="role" ng-model="userObject.Role"/>
+                                </div>
+                            </div>
+                            <input type="hidden" ng-model="$scope.objectIndex">
+                            <div class="btn-group col-sm-2">
+                                <button type="button" class="btn btn-primary btn" ng-click="delete()">Delete</button>
+                            </div>
+                            <div class="btn-group col-sm-2">
+                                <button type="button" class="btn btn-primary btn" ng-click="save()">Submit</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

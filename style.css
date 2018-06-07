@@ -1,0 +1,27 @@
+hr {
+    border:1px solid #000;
+}
+.verticalLine {
+    border-left: 1px solid #000;
+    height: 250px;
+    top: 0;
+}
+.outerDiv{
+    border:2px solid #000;
+}
+.inputWidth { 
+    width: 250px; 
+}
+.outWdt {
+    min-height:70px;
+    border-bottom:1px solid#000;
+}
+.pdt {
+    padding-left:20px;
+}
+.frmStl {
+    float:left;
+}
+.pdt10 {
+    padding-left:12px;
+}
