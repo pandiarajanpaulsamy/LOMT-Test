@@ -22,7 +22,13 @@ angular.module('UserManagementApp.controllers', []).controller('userController',
         $scope.objectIndex = '';
     }
     //Delete action
-    $scope.delete = function(id) {
+    $scope.delete = function() {
+        $scope.userList.splice($scope.objectIndex,1);
+        $scope.userObject.Name ='';
+        $scope.userObject.Role ='';
+    }
+    //Delete action using id
+    $scope.deleteBasedOnId = function(id) {        
         $scope.userList.splice(id,1);
         $scope.userObject.Name ='';
         $scope.userObject.Role ='';

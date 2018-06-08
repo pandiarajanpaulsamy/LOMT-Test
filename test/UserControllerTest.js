@@ -1,28 +1,50 @@
-describe('userController function', function() {
-	describe('userController', function() {
-	  var $scope, userManagementController;
-	  var mock = [
-		{
-		  "Name":"frank",
-		  "Role":"team lead"
-		},
-		{
-		  "Name":"sam",
-		  "Role":"manager"
-		}
-	  ];
-	  beforeEach(module('UserManagementApp'));
+describe('User Management App Unit Testing', function () {
+		
+	beforeEach(angular.mock.module('UserManagementApp'));
+
+	var $controller;
+
+	beforeEach(angular.mock.inject(function(_$controller_){
+        $controller = _$controller_;
+    }));
+    
+    describe('Check controller is defined', function () {
+		it('should test Controller is defined', function () {
+			var $scope = {};
+			var controller = $controller('userController', { $scope: $scope });			
+			expect(controller).toBeDefined();
+    	});    
+    });
   
-	  beforeEach(inject(function ($rootScope, $controller) {
-		$scope = $rootScope.$new();
-		userManagementController = $controller('userController', {
-		  $scope: $scope 
-		});
-		$scope.userObject = mock;
-	  }));
-	  
-	 /* it("should check controller is defined or not", function () {
-		  expect(userManagementController).toBeDefined();
-	  });*/
-  });
+	describe('save action', function () {
+		it('should test user list is added while submiting with user name and role', function () {
+			var $scope = {};
+			var controller = $controller('userController', { $scope: $scope });
+			$scope.userList.Name = "Ram";
+			$scope.userList.Role = "Team Lead";
+			$scope.save();
+			expect($scope.userList.length).toBe(2);
+    	});    
+    });
+
+    describe('Edit action', function () {
+		it('should test user edit function based on index', function () {
+			var $scope = {};
+			var controller = $controller('userController', { $scope: $scope });
+			var id =1;
+            $scope.edit(id);
+			expect(id).toEqual(1);
+    	});    
+      });
+
+    describe('delete action', function () {
+		it('should test user delete function based on index', function () {
+            var $scope = {};
+            $scope.userObject ={};
+			var controller = $controller('userController', { $scope: $scope });
+			var id =2;
+            $scope.delete(id);
+			expect(id).toEqual(2);
+    	});    
+    });
 });
